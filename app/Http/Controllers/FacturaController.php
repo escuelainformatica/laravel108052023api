@@ -20,8 +20,7 @@ class FacturaController extends Controller
     public function login(Request $request)
     {
         $body = json_decode($request->getContent(), true);
-        $auth = Auth::attempt(['email' => $body['email'] ?? '', 'password' => $body['password'] ?? '']);
-        if ($auth) {
+        if (Auth::attempt(['email' => $body['email'] ?? '', 'password' => $body['password'] ?? ''])) {
       
             return [
                 'nombre' => Auth::user()->name,
